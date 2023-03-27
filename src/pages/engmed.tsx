@@ -270,18 +270,72 @@ export default function Third_EN() {
 				<>
 				<div className='main-container-5'>
 					<div className='main-descrition-5'>
-					<div className='main-des-title'>Americans Over 64 Can Now Qualify For The $3600 FLEX Card In 2023. Here's How!</div>
+					<div className='main-des-title'>US Businessowners are getting $26,000 per employee they kept on a payroll during the "National Lockdown". See If You Qualify For Up To $26,000 Per Employee</div>
 					{/* <img src = {Head_img} alt = "head" width = "100%" /> */}
-                    <img className='topic-img-5' src = {Head_bg} alt = "head"/>
-					<div className='main-des-5'>Americans over 64 can pre-qualify for the 2023 Flex Spending Card that gives them up to $3600. Seniors can use the funds for dental or vision, groceries, rent, utility bills, medication and more.</div>
-					<div className='main-des-5' style = {{marginTop:"1rem"}}><b>The opportunity to upgrade your benefits ends on March 31st</b> so it's best to call and get your Flex Card locked in while it's still available.</div>
+                    {/* <img className='topic-img-5' src = {Head_bg} alt = "head"/> */}
+					<div className="video-responsive">
+						<iframe
+							width="853"
+							height="480"
+							src={`https://www.youtube.com/embed/bNUDWh6kOa4`}
+							frameBorder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowFullScreen
+							// title="Embedded youtube"
+						/>
+					</div>
+					{/* <div className='main-des-5'>Americans over 64 can pre-qualify for the 2023 Flex Spending Card that gives them up to $3600. Seniors can use the funds for dental or vision, groceries, rent, utility bills, medication and more.</div> */}
+					<div className='main-des-5' style = {{marginTop:"1rem"}}>Check Your Eligibility:</div>
 					</div>
 					<div className='survey'>
-					<div className='quiz-5' id='btn'>{quiz}</div>
-					<div className='answer'>
-						<div className='answer-btn-5' onClick={handleQuizP}>{yes}</div>
-						<div className='answer-btn-5' onClick={handleQuizN}>{no}</div>
-					</div>
+						<div className='quiz-5' id='btn'>Excluding yourself, did you employ W-2 employees in 2020 or 2021?</div>
+						<div className='answer'>
+							<div className='answer-btn-5'>Yes</div>
+							<div className='answer-btn-5'>No</div>
+						</div>
+						<div className='quiz-5' id='btn'>Was your business negatively impacted by government orders in 2020 or 2021?</div>
+						<div className='answer'>
+							<div className='answer-btn-5'>Yes</div>
+							<div className='answer-btn-5'>No</div>
+						</div>
+						<div className='quiz-5' id='btn'>Did your business experience a year-over-year revenue decrease during any quarter of 2020 or 2021?</div>
+						<div className='answer'>
+							<div className='answer-btn-5'>Yes</div>
+							<div className='answer-btn-5'>No</div>
+						</div>
+						<div className='form-data'>
+							<div className='quiz-5' id='btn'>When did you start your business?</div>
+							<input type="month" className='input-form-style'></input>
+						</div>
+						<div className='form-data'>
+							<div className='quiz-5' id='btn'>How many W-2 employees did you employ on average in 2020?</div>
+							<input type="number" className='input-form-style'></input>
+						</div>
+						<div className='form-data'>
+							<div className='quiz-5' id='btn'>How many W-2 employees did you employ on average in 2021?</div>
+							<input type="number" className='input-form-style'></input>
+						</div>
+						<div className='form-data'>
+							<div className='form-data-key' id='btn'>First name</div>
+							<input type="text" className='input-form-style'></input>
+						</div>
+						<div className='form-data'>
+							<div className='form-data-key' id='btn'>Last name</div>
+							<input type="text" className='input-form-style'></input>
+						</div>
+						<div className='form-data'>
+							<div className='form-data-key' id='btn'>Email address</div>
+							<input type="email" className='input-form-style'></input>
+						</div>
+						<div className='form-data'>
+							<div className='form-data-key' id='btn'>Mobile phone</div>
+							<input type="tel" className='input-form-style'></input>
+						</div>
+						<div className='form-data'>
+							<div className='form-data-key' id='btn'>Business name</div>
+							<input type="text" className='input-form-style'></input>
+						</div>
+						<div className='submit-btn'>Submit</div>
 					</div>
 				</div>
 				</>:
