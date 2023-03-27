@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import './App.scss';
 
-import Third_EN from './pages/engmed';
+import Fifth_EN from './pages/engmed';
 
 function App() {
   
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path = "/engmed1" element = {<Third_EN />} />
+          <Route path = "/engmed1" element = {<Fifth_EN />} />
         </Routes>
       </div>
     </Router>

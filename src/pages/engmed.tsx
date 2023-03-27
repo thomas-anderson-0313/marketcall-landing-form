@@ -11,18 +11,18 @@ import Head_bg from '../assets/hero5.png'
 // google tag manager
 
 const tagManagerArgs = {
-    gtmId: 'GTM-5B4S3PH'
+    gtmId: 'GTM-TGC6H5J'
 }
 
 TagManager.initialize(tagManagerArgs)
 
-export default function Third_EN() {
+export default function Fifth_EN() {
 
 	useEffect(() => {
 		window.document.title="Check Your Eligibility Now";
 
 		axios
-      .get(process.env.REACT_APP_PROXY + `/visits/5`)
+      .get(process.env.REACT_APP_PROXY + `/visits/9`)
       .then(({ data }) => {
         if(data.length===0){
 			const visits = {
@@ -35,7 +35,7 @@ export default function Third_EN() {
 
 			axios
 			.post(
-				process.env.REACT_APP_PROXY + `/visits/create-visits5`,
+				process.env.REACT_APP_PROXY + `/visits/create-visits9`,
 				visits
 			)
 			.catch((err) =>
@@ -59,7 +59,7 @@ export default function Third_EN() {
 			}
 			axios
 			.put(
-				process.env.REACT_APP_PROXY + `/visits/update-visits5/`+_id,
+				process.env.REACT_APP_PROXY + `/visits/update-visits9/`+_id,
 				visits
 			)
 			.catch((err) =>
@@ -75,7 +75,7 @@ export default function Third_EN() {
 
 	const handleCall = () => {
 		axios
-		.get(process.env.REACT_APP_PROXY + `/visits/5`)
+		.get(process.env.REACT_APP_PROXY + `/visits/9`)
 		.then(({ data }) => {
 			const _id = data[0]._id
 			const _visits = data[0].visits
@@ -92,7 +92,7 @@ export default function Third_EN() {
 			}
 		axios
 		.put(
-			process.env.REACT_APP_PROXY + `/visits/update-visits5/`+_id,
+			process.env.REACT_APP_PROXY + `/visits/update-visits9/`+_id,
 			visits
 		)
 		.catch((err) =>
@@ -102,12 +102,10 @@ export default function Third_EN() {
 	}
 
 
-	const [quiz, setQuiz] = useState("Are you over 64?")
+	const [quiz, setQuiz] = useState("Excluding yourself, did you employ W-2 employees in 2020 or 2021?")
 	const [step, setStep] = useState("process")
 	const [min, setMin] = useState(3)
 	const [second, setSecond] = useState<any>(0)    
-	const [yes, setYes] = useState("Yes, I'm 65 or Older")
-	const [no, setNo] = useState("No, I'm 64 or Younger")
 	
 	
 	const stepProcess = () => {
@@ -126,7 +124,7 @@ export default function Third_EN() {
 			  setStep("completed")
 
 			  axios
-				.get(process.env.REACT_APP_PROXY + `/visits/5`)
+				.get(process.env.REACT_APP_PROXY + `/visits/9`)
 				.then(({ data }) => {
 					const _id = data[0]._id
 					const _visits = data[0].visits
@@ -143,7 +141,7 @@ export default function Third_EN() {
 					}
 				axios
 				.put(
-					process.env.REACT_APP_PROXY + `/visits/update-visits5/`+_id,
+					process.env.REACT_APP_PROXY + `/visits/update-visits9/`+_id,
 					visits
 				)
 				.catch((err) =>
@@ -157,49 +155,35 @@ export default function Third_EN() {
 			const startTime:any = new Date();
 			const timer = setInterval(()=> {
 			  const nowTime:any = new Date();
-			  // setMin(min+1)
 			  setSecond((180-Math.round((nowTime-startTime)/1000))%60)
 			  setMin(Math.floor((180-Math.round((nowTime-startTime)/1000))/60))
 			}, 1000)
-			// if(Math.round((new Date()-startTime)/1000)){
-			// 	console.log("dsfdsfdsf");
-			// 	return clearInterval(timer)
-			// }
 		}
 	}
-
-	// React.useEffect(() => {
-	//                 // getInfo()
-	//                 console.log(time);
-	//                 stepProcess()
-	//                 const timer = setTimeout(() => setTime(+new Date()), 1000)
-	//                 return () => clearTimeout(timer)
-	//         }, [time]);
-
 
 	useEffect(() => {
 		stepProcess()
 	}, [step])
 
 	const topScroll = (id: any) => {
-			// window.scrollTo(0, 0);
-			// window.innerWidth < 1200 ? setIsMobile(false) : scrollTo({ id });
 			scrollTo({ id });
 		}
 
 	const handleQuizP = () => {
 		topScroll("btn");
-		if(quiz === "Are you over 64?"){
-			setQuiz("Are You On Medicare or Medicaid?")
-			setYes("Yes")
-			setNo("No")
+		if(quiz === "Excluding yourself, did you employ W-2 employees in 2020 or 2021?"){
+			setQuiz("Was your business negatively impacted by government orders in 2020 or 2021?")
 		}else{
-			setStep("Reviewing Your Answers...")
-			topScroll("top");
+			if(quiz === "Was your business negatively impacted by government orders in 2020 or 2021?"){
+				setQuiz("Did your business experience a year-over-year revenue decrease during any quarter of 2020 or 2021?")
+			}else{
+				setStep("Reviewing Your Answers...")
+				topScroll("top");
+			}
 		}
 
 		axios
-		.get(process.env.REACT_APP_PROXY + `/visits/5`)
+		.get(process.env.REACT_APP_PROXY + `/visits/9`)
 		.then(({ data }) => {
 			const _id = data[0]._id
 			const _visits = data[0].visits
@@ -216,7 +200,7 @@ export default function Third_EN() {
 			}
 		axios
 		.put(
-			process.env.REACT_APP_PROXY + `/visits/update-visits5/`+_id,
+			process.env.REACT_APP_PROXY + `/visits/update-visits9/`+_id,
 			visits
 		)
 		.catch((err) =>
@@ -227,17 +211,19 @@ export default function Third_EN() {
 
 	const handleQuizN = () => {
 		topScroll("btn");
-		if(quiz === "Are you over 64?"){
-			setQuiz("Are You On Medicare or Medicaid?")
-			setYes("Yes")
-			setNo("No")
+		if(quiz === "Excluding yourself, did you employ W-2 employees in 2020 or 2021?"){
+			setQuiz("Was your business negatively impacted by government orders in 2020 or 2021?")
 		}else{
-			setStep("Reviewing Your Answers...")
-			topScroll("top");
+			if(quiz === "Was your business negatively impacted by government orders in 2020 or 2021?"){
+				setQuiz("Did your business experience a year-over-year revenue decrease during any quarter of 2020 or 2021?")
+			}else{
+				setStep("Reviewing Your Answers...")
+				topScroll("top");
+			}
 		}
 
 		axios
-		.get(process.env.REACT_APP_PROXY + `/visits/5`)
+		.get(process.env.REACT_APP_PROXY + `/visits/9`)
 		.then(({ data }) => {
 			const _id = data[0]._id
 			const _visits = data[0].visits
@@ -254,7 +240,7 @@ export default function Third_EN() {
 			}
 		axios
 		.put(
-			process.env.REACT_APP_PROXY + `/visits/update-visits5/`+_id,
+			process.env.REACT_APP_PROXY + `/visits/update-visits9/`+_id,
 			visits
 		)
 		.catch((err) =>
@@ -265,77 +251,22 @@ export default function Third_EN() {
 
     return(
         <div>
-			<div className='top-sticky-blue' id='top'>My Senior Saving Journal</div>
+			<div className='top-sticky-blue' id='top'>USA Savings Journal</div>
 			{step==="process"?
 				<>
 				<div className='main-container-5'>
 					<div className='main-descrition-5'>
-					<div className='main-des-title'>US Businessowners are getting $26,000 per employee they kept on a payroll during the "National Lockdown". See If You Qualify For Up To $26,000 Per Employee</div>
-					{/* <img src = {Head_img} alt = "head" width = "100%" /> */}
-                    {/* <img className='topic-img-5' src = {Head_bg} alt = "head"/> */}
-					<div className="video-responsive">
-						<iframe
-							width="853"
-							height="480"
-							src={`https://www.youtube.com/embed/bNUDWh6kOa4`}
-							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowFullScreen
-							// title="Embedded youtube"
-						/>
-					</div>
-					{/* <div className='main-des-5'>Americans over 64 can pre-qualify for the 2023 Flex Spending Card that gives them up to $3600. Seniors can use the funds for dental or vision, groceries, rent, utility bills, medication and more.</div> */}
-					<div className='main-des-5' style = {{marginTop:"1rem"}}>Check Your Eligibility:</div>
+						<div className='main-des-title'>Millions of Business Owners Nationwide are getting<span style={{backgroundColor:"#fde047"}}> FREE Stimulus Check of upto $26,000 per employee</span> under this Congress-Approved Program. Here's how!</div>
+						<img className='topic-img-middle' src = {Head_bg} alt = "head"/>
+						<div className='main-des-5'>Americans Business owners can qualify for a Free Stimulus Check of upto $26,000 per employee that they kept on payroll in 2020 and or 2021. This is not a loan, this is Free Money that business owners can use in anything they wish.</div>
+						<div className='main-des-5' style = {{marginTop:"1rem"}}><b>The opportunity to claim your Stimulus Check</b> (if eligible) <b>ends on March 31st</b> so it's best to check your eligibility now. Its as easy as answering the 3 questions below:</div>
 					</div>
 					<div className='survey'>
-						<div className='quiz-5' id='btn'>Excluding yourself, did you employ W-2 employees in 2020 or 2021?</div>
+						<div className='quiz-5' id='btn'>{quiz}</div>
 						<div className='answer'>
-							<div className='answer-btn-5'>Yes</div>
-							<div className='answer-btn-5'>No</div>
+							<div className='answer-btn-5' onClick={handleQuizP}>Yes</div>
+							<div className='answer-btn-5' onClick={handleQuizN}>No</div>
 						</div>
-						<div className='quiz-5' id='btn'>Was your business negatively impacted by government orders in 2020 or 2021?</div>
-						<div className='answer'>
-							<div className='answer-btn-5'>Yes</div>
-							<div className='answer-btn-5'>No</div>
-						</div>
-						<div className='quiz-5' id='btn'>Did your business experience a year-over-year revenue decrease during any quarter of 2020 or 2021?</div>
-						<div className='answer'>
-							<div className='answer-btn-5'>Yes</div>
-							<div className='answer-btn-5'>No</div>
-						</div>
-						<div className='form-data'>
-							<div className='quiz-5' id='btn'>When did you start your business?</div>
-							<input type="month" className='input-form-style'></input>
-						</div>
-						<div className='form-data'>
-							<div className='quiz-5' id='btn'>How many W-2 employees did you employ on average in 2020?</div>
-							<input type="number" className='input-form-style'></input>
-						</div>
-						<div className='form-data'>
-							<div className='quiz-5' id='btn'>How many W-2 employees did you employ on average in 2021?</div>
-							<input type="number" className='input-form-style'></input>
-						</div>
-						<div className='form-data'>
-							<div className='form-data-key' id='btn'>First name</div>
-							<input type="text" className='input-form-style'></input>
-						</div>
-						<div className='form-data'>
-							<div className='form-data-key' id='btn'>Last name</div>
-							<input type="text" className='input-form-style'></input>
-						</div>
-						<div className='form-data'>
-							<div className='form-data-key' id='btn'>Email address</div>
-							<input type="email" className='input-form-style'></input>
-						</div>
-						<div className='form-data'>
-							<div className='form-data-key' id='btn'>Mobile phone</div>
-							<input type="tel" className='input-form-style'></input>
-						</div>
-						<div className='form-data'>
-							<div className='form-data-key' id='btn'>Business name</div>
-							<input type="text" className='input-form-style'></input>
-						</div>
-						<div className='submit-btn'>Submit</div>
 					</div>
 				</div>
 				</>:
@@ -346,12 +277,12 @@ export default function Third_EN() {
 					</div>:
 					<div className='checking'>
 						<div className='congrats'>Congratulation, You Qualify!</div>
-						<div className='top-description-5'>Make A <b>Quick Call</b> To Claim Your Flex Card!</div>
+						<div className='top-description-5'>Make A <b>Quick Call</b> and Speak to our Qualified Agent on how you can <b>Claim Your Stimulus Check</b> as soon as possible!</div>
 						<div className='spots-count'>Spots remaining: 4</div>
 						<div className='tap-direction'>👇 TAP BELOW TO CALL 👇</div>
-						<a href = "tel:+18885264568">
+						<a href = "tel:+18338440765">
 							<div className='call-btn' onClick={handleCall}>
-								CALL (888) 526-4568
+								CALL (833) 844-0765
 							</div>
 						</a>
 						<div className='sub-title'>We Have Reserved Your Spot</div>
